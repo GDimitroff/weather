@@ -1,0 +1,134 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  user-select: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  background: #111;
+  text-shadow: 1px 1px 2px black;
+}
+
+h1,
+h3 {
+  font-weight: 400;
+}
+
+.main {
+  min-height: 100vh;
+  background: url('./assets/imgs/day/cloudy.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  transition: 500ms;
+
+  /* Change to 0 once the whole app is finished */
+  opacity: 1;
+}
+
+/* Add background overlay */
+.main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.upper-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem;
+}
+
+.info > div {
+  display: flex;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.temp {
+  font-size: 10rem;
+  line-height: 8rem;
+}
+
+.weather img {
+  display: block;
+}
+
+.name {
+  margin-top: 2rem;
+}
+
+.info p {
+  font-size: 1.4rem;
+  margin-top: 0.2rem;
+}
+
+#locationInput {
+  margin-top: 2rem;
+}
+
+.details ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.details ul li {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.details .icon {
+  min-width: 46px;
+}
+
+.details .icon i {
+  font-size: 3.6rem;
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.details-info div {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.bottom-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem;
+}

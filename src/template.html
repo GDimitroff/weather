@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <script
@@ -18,62 +18,76 @@
   </head>
   <body>
     <main class="main">
-      <div class="container">
-        <h3 class="brand">the weather</h3>
-        <div>
-          <h1 class="temp">16&#176;</h1>
-          <div class="city-time">
-            <h1 class="name">London</h1>
-            <small>
-              <span class="time">06:09</span>
-              -
-              <span class="date"> Monday Sep 19 </span>
-            </small>
-          </div>
+      <div class="upper-panel">
+        <div class="info">
           <div class="weather">
-            <img
-              src="./assets/icons/day/113.png"
-              alt="icon"
-              class="icon"
-              height="50"
-              width="50"
-            />
-            <span class="condition">Cloudy</span>
+            <h1 class="temp">16&#176;</h1>
+            <div class="condition">
+              <img src="./assets/icons/day/113.png" alt="icon" class="icon" />
+            </div>
           </div>
+          <h1 class="name">London, United Kingdom</h1>
+          <p>
+            <span class="time">06:09</span>
+            -
+            <span class="date">Monday Sep 19</span>
+          </p>
+
+          <form id="locationInput">
+            <input
+              type="text"
+              class="search"
+              placeholder="Search location..."
+            />
+            <button type="submit" class="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="details">
+          <ul>
+            <li>
+              <div class="icon">
+                <i class="fa-solid fa-temperature-half"></i>
+              </div>
+              <div class="details-info">
+                <span>Feels Like</span>
+                <div class="feels-like">30&#176;</div>
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fa-solid fa-cloud-rain"></i>
+              </div>
+              <div class="details-info">
+                <span>Chance of Rain</span>
+                <div class="chance-rain">0%</div>
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fa-solid fa-droplet"></i>
+              </div>
+              <div class="details-info">
+                <span>Humidity</span>
+                <div class="humidity">64%</div>
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fa-solid fa-wind"></i>
+              </div>
+              <div class="details-info">
+                <span>Wind</span>
+                <div class="wind">8 km/h</div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="panel">
-        <form id="locationInput">
-          <input type="text" class="search" placeholder="Search location..." />
-          <button type="submit" class="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-
-        <ul class="cities">
-          <li class="city">New York</li>
-          <li class="city">California</li>
-          <li class="city">Paris</li>
-          <li class="city">Tokyo</li>
-        </ul>
-
-        <ul class="details">
-          <h4>Weather Details</h4>
-          <li>
-            <span>Cloudy</span>
-            <span class="cloud">89%</span>
-          </li>
-          <li>
-            <span>Humidity</span>
-            <span class="humidity">64%</span>
-          </li>
-          <li>
-            <span>Wind</span>
-            <span class="wind">8km/h</span>
-          </li>
-        </ul>
-      </div>
+      <div class="bottom-panel"></div>
     </main>
   </body>
 </html>
