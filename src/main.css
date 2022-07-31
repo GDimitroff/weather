@@ -47,6 +47,7 @@ h3 {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   z-index: 0;
+  overflow: hidden;
 }
 
 .upper-panel {
@@ -105,12 +106,12 @@ h3 {
   align-items: center;
 }
 
-.details .icon {
-  min-width: 46px;
-}
-
-.details .icon i {
+.icon {
   font-size: 3.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 46px;
 }
 
 .details-info {
@@ -128,7 +129,26 @@ h3 {
   bottom: 0;
   left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
   padding: 4rem;
+}
+
+.weekday {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  padding: 2rem;
+}
+
+.weekday h4 {
+  margin-bottom: 2rem;
+}
+
+.weekday-temp {
+  margin-top: 1rem;
+  font-size: 3.4rem;
 }
