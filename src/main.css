@@ -89,8 +89,40 @@ h3 {
   margin-top: 0.2rem;
 }
 
-#locationInput {
+#location-input {
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+#location-input input {
+  padding: 0.6rem;
+  font-family: inherit;
+  height: 25px;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #fafafa;
+  color: #fafafa;
+  border-radius: 3px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+#location-input button {
+  background-color: #fafafa;
+  border: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 3px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+#location-input button:hover,
+#location-input button:active {
+  background-color: #dbdbdb;
 }
 
 .details ul {
