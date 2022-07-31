@@ -63,6 +63,7 @@ h3 {
 
 .info > div {
   display: flex;
+  align-items: center;
 }
 
 .weather {
@@ -89,8 +90,11 @@ h3 {
   margin-top: 0.2rem;
 }
 
-#location-input {
+.search-input {
   margin-top: 2rem;
+}
+
+#location-input {
   display: flex;
   align-items: center;
 }
@@ -162,7 +166,7 @@ h3 {
   left: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
   padding: 4rem;
 }
@@ -183,4 +187,72 @@ h3 {
 .weekday-temp {
   margin-top: 1rem;
   font-size: 3.4rem;
+}
+
+/************************************/
+/* BELOW 1200px (Landscape Tablets) */
+/************************************/
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+/************************************/
+/* BELOW 940px (Tablets)            */
+/************************************/
+
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/************************************/
+/* BELOW 704px (Smaller Tablets)    */
+/************************************/
+
+@media (max-width: 44em) {
+  .main {
+    overflow: hidden;
+  }
+
+  .bottom-panel {
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  .weekday {
+    min-width: 200px;
+  }
+}
+
+/************************************/
+/* BELOW 544px (Phones)             */
+/************************************/
+
+@media (max-width: 34em) {
+  .upper-panel {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .info > div {
+    justify-content: center;
+  }
+
+  .search-input {
+    margin-top: 4rem;
+  }
+
+  .name,
+  .info p {
+    text-align: center;
+  }
+
+  .details {
+    margin-top: 2rem;
+  }
 }
