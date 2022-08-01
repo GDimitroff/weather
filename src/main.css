@@ -189,6 +189,16 @@ h3 {
   font-weight: 700;
 }
 
+.sunrise-sunset {
+  display: flex;
+  justify-content: center;
+}
+
+.sunrise,
+.sunset {
+  text-align: center;
+}
+
 .forecast {
   display: flex;
   flex-direction: column;
