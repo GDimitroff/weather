@@ -50,20 +50,14 @@ h3 {
   overflow: hidden;
 }
 
-.upper-panel {
+.left-panel {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  width: 70%;
 
   display: flex;
-  justify-content: space-between;
   padding: 4rem;
-}
-
-.info > div {
-  display: flex;
-  align-items: center;
 }
 
 .weather {
@@ -75,6 +69,17 @@ h3 {
 .temp {
   font-size: 10rem;
   line-height: 8rem;
+}
+
+.condition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.condition img {
+  width: 50px;
+  height: 50px;
 }
 
 .weather img {
@@ -90,36 +95,45 @@ h3 {
   margin-top: 0.2rem;
 }
 
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .search-input {
-  margin-top: 2rem;
+  position: relative;
 }
 
 #location-input {
   display: flex;
   align-items: center;
+  padding: 0 3rem;
 }
 
 #location-input input {
-  padding: 0.6rem;
+  width: 80%;
   font-family: inherit;
-  height: 25px;
+  height: 50px;
   outline: none;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid #fafafa;
+  background-color: transparent;
+  border: none;
   color: #fafafa;
-  border-radius: 3px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-bottom: 1px solid #fafafa;
 }
 
 #location-input button {
+  position: absolute;
+  top: 0;
+  right: 0;
   background-color: #fafafa;
   border: none;
-  height: 25px;
-  width: 25px;
-  border-radius: 3px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  height: 50px;
+  width: 50px;
+  border: none;
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
@@ -129,46 +143,54 @@ h3 {
   background-color: #dbdbdb;
 }
 
+.sidebar h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 3rem;
+}
+
+.details {
+  padding: 0 3rem;
+}
+
 .details ul {
-  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  list-style: none;
 }
 
 .details ul li {
   display: flex;
-  gap: 16px;
+  justify-content: space-between;
   align-items: center;
 }
 
-.icon {
-  font-size: 3.6rem;
+.left {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-width: 46px;
+  gap: 8px;
 }
 
-.details-info {
-  display: flex;
-  flex-direction: column;
+.left i {
+  font-size: 2rem;
+  min-width: 20px;
+  text-align: center;
 }
 
-.details-info div {
-  font-size: 1.8rem;
+.left > span {
+  font-size: 1.4rem;
+}
+
+.right {
+  font-size: 1.4rem;
   font-weight: 700;
 }
 
-.bottom-panel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.forecast {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
-  padding: 4rem;
 }
 
 .weekday {
@@ -214,7 +236,7 @@ h3 {
 /************************************/
 
 @media (max-width: 44em) {
-  .main {
+  /* .main {
     overflow: hidden;
   }
 
@@ -225,7 +247,7 @@ h3 {
 
   .weekday {
     min-width: 200px;
-  }
+  } */
 }
 
 /************************************/
@@ -233,7 +255,7 @@ h3 {
 /************************************/
 
 @media (max-width: 34em) {
-  .upper-panel {
+  /* .upper-panel {
     flex-direction: column;
     align-items: center;
     gap: 18px;
@@ -254,5 +276,5 @@ h3 {
 
   .details {
     margin-top: 2rem;
-  }
+  } */
 }

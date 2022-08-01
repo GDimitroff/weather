@@ -18,12 +18,13 @@
   </head>
   <body>
     <main class="main">
-      <div class="upper-panel">
+      <div class="left-panel">
         <div class="info">
           <div class="weather">
-            <h1 class="temp">16&#176;</h1>
+            <h1 class="temp">25°</h1>
             <div class="condition">
-              <img src="./assets/icons/day/113.png" alt="icon" class="icon" />
+              <img src="./assets/icons/day/113.png" alt="icon" />
+              <p>Cloudy</p>
             </div>
           </div>
           <h1 class="name">London, United Kingdom</h1>
@@ -33,110 +34,115 @@
             <span class="date">Monday Sep 19</span>
           </p>
         </div>
+      </div>
 
+      <div class="sidebar">
+        <div class="search-input">
+          <form id="location-input">
+            <input
+              type="text"
+              class="search"
+              placeholder="Search location..."
+            />
+            <button type="submit" class="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <h3>Weather Details</h3>
         <div class="details">
           <ul>
             <li>
-              <div class="icon">
+              <div class="left">
                 <i class="fa-solid fa-temperature-half"></i>
-              </div>
-              <div class="details-info">
                 <span>Feels Like</span>
+              </div>
+              <div class="right">
                 <div class="feels-like">30&#176;</div>
               </div>
             </li>
             <li>
-              <div class="icon">
+              <div class="left">
                 <i class="fa-solid fa-cloud-rain"></i>
-              </div>
-              <div class="details-info">
                 <span>Chance of Rain</span>
+              </div>
+              <div class="right">
                 <div class="chance-rain">0%</div>
               </div>
             </li>
             <li>
-              <div class="icon">
+              <div class="left">
                 <i class="fa-solid fa-droplet"></i>
-              </div>
-              <div class="details-info">
                 <span>Humidity</span>
+              </div>
+              <div class="right">
                 <div class="humidity">64%</div>
               </div>
             </li>
             <li>
-              <div class="icon">
+              <div class="left">
                 <i class="fa-solid fa-wind"></i>
-              </div>
-              <div class="details-info">
                 <span>Wind</span>
+              </div>
+              <div class="right">
                 <div class="wind">8 km/h</div>
               </div>
             </li>
           </ul>
-          
-          <div class="search-input">
-            <form id="location-input">
-              <input
-                type="text"
-                class="search"
-                placeholder="Search location..."
-              />
-              <button type="submit" class="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </div>
         </div>
-      </div>
-      <div class="bottom-panel">
-        <div class="weekday">
-          <h4>Monday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+
+        <h3>Forecast</h3>
+        <div class="forecast">
+          <div class="weekday">
+            <h4>Monday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
-        </div>
-        <div class="weekday">
-          <h4>Tuesday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+          <div class="weekday">
+            <h4>Tuesday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
-        </div>
-        <div class="weekday">
-          <h4>Wednesday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+          <div class="weekday">
+            <h4>Wednesday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
-        </div>
-        <div class="weekday">
-          <h4>Thursday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+          <div class="weekday">
+            <h4>Thursday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
-        </div>
-        <div class="weekday">
-          <h4>Friday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+          <div class="weekday">
+            <h4>Friday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
-        </div>
-        <div class="weekday">
-          <h4>Saturday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+          <div class="weekday">
+            <h4>Saturday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
-        </div>
-        <div class="weekday">
-          <h4>Sunday</h4>
-          <div class="icon">
-            <i class="fa-solid fa-snowflake"></i>
+          <div class="weekday">
+            <h4>Sunday</h4>
+            <div class="icon">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <p class="weekday-temp">-2&#176;</p>
           </div>
-          <p class="weekday-temp">-2&#176;</p>
         </div>
       </div>
     </main>
