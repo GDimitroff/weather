@@ -9,28 +9,28 @@
 html {
   font-size: 62.5%;
   user-select: none;
+  height: -webkit-fill-available;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
+  height: 100vh;
+  height: -webkit-fill-available;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.6rem;
   background: #111;
   text-shadow: 1px 1px 2px black;
 }
 
-h1,
-h3 {
-  font-weight: 400;
-}
-
 .main {
-  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  height: 100%;
   background: url('./assets/imgs/day/cloudy.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: #fafafa;
-  position: relative;
   transition: 500ms;
 
   /* Change to 0 once the whole app is finished */
@@ -50,14 +50,16 @@ h3 {
   overflow: hidden;
 }
 
-.left-panel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 70%;
+h1,
+h3 {
+  font-weight: 400;
+}
 
+.left-panel {
+  flex-basis: 60%;
   display: flex;
   padding: 4rem;
+  z-index: 1;
 }
 
 .weather {
@@ -96,25 +98,21 @@ h3 {
 }
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 30%;
-  height: 100%;
-  padding: 4rem 5rem;
+  flex-basis: 40%;
+  padding: 4rem;
   background: rgba(0, 0, 0, 0.3);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.219);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 0, 0, 0.048);
+  overflow-y: auto;
   z-index: 1;
 }
 
 .settings {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
   margin-bottom: 4rem;
 }
 
@@ -330,18 +328,29 @@ hr {
 /************************************/
 
 @media (max-width: 44em) {
-  /* .main {
-    overflow: hidden;
+  .main {
+    flex-direction: column;
   }
 
-  .bottom-panel {
-    display: flex;
-    overflow-x: scroll;
+  .left-panel {
+    flex-basis: 25%;
   }
 
-  .weekday {
-    min-width: 200px;
-  } */
+  .sidebar {
+    flex-basis: 75%;
+  }
+
+  .settings {
+    margin-bottom: 3rem;
+  }
+
+  .sidebar h3 {
+    margin: 2rem 0;
+  }
+
+  .details ul {
+    gap: 12px;
+  }
 }
 
 /************************************/
@@ -349,26 +358,7 @@ hr {
 /************************************/
 
 @media (max-width: 34em) {
-  /* .upper-panel {
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
+  .name {
+    font-size: 2.4rem;
   }
-
-  .info > div {
-    justify-content: center;
-  }
-
-  .search-input {
-    margin-top: 4rem;
-  }
-
-  .name,
-  .info p {
-    text-align: center;
-  }
-
-  .details {
-    margin-top: 2rem;
-  } */
 }
