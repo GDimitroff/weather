@@ -29,7 +29,7 @@ h3 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
+  color: #fafafa;
   position: relative;
   transition: 500ms;
 
@@ -101,23 +101,30 @@ h3 {
   bottom: 0;
   right: 0;
   width: 30%;
+  padding: 4rem 5rem;
   background: rgba(0, 0, 0, 0.3);
 }
 
+.settings {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 4rem;
+}
+
 .search-input {
-  position: relative;
+  width: 100%;
 }
 
 #location-input {
   display: flex;
   align-items: center;
-  padding: 0 3rem;
 }
 
 #location-input input {
-  width: 80%;
+  width: 100%;
   font-family: inherit;
-  height: 50px;
+  height: 34px;
   outline: none;
   background-color: transparent;
   border: none;
@@ -125,33 +132,31 @@ h3 {
   border-bottom: 1px solid #fafafa;
 }
 
+#location-input input::placeholder {
+  color: #94a3b8;
+}
+
 #location-input button {
-  position: absolute;
-  top: 0;
-  right: 0;
   background-color: #fafafa;
   border: none;
-  height: 50px;
-  width: 50px;
+  height: 34px;
+  width: 34px;
   border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   cursor: pointer;
   transition: 0.4s ease-in-out;
 }
 
 #location-input button:hover,
 #location-input button:active {
-  background-color: #dbdbdb;
+  background-color: #cbd5e1;
 }
 
 .sidebar h3 {
   font-size: 1.6rem;
   font-weight: 700;
-  padding: 3rem;
-}
-
-.details,
-.forecast {
-  padding: 0 3rem;
+  margin: 3rem 0;
 }
 
 .details ul {
@@ -202,7 +207,7 @@ h3 {
 .forecast {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 
 .weekday {
@@ -213,6 +218,77 @@ h3 {
 .temp-day-night {
   min-width: 75px;
   text-align: end;
+}
+
+/* Switch*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fafafa;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 36px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #94a3b8;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.slider.round:before {
+  border-radius: 3px;
+}
+.switch div {
+  display: flex;
+  top: 9px;
+  left: 16px;
+  gap: 30px;
+  color: black;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: none;
+}
+
+hr {
+  margin: 3rem 0;
 }
 
 /************************************/
