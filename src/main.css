@@ -101,8 +101,14 @@ h3 {
   bottom: 0;
   right: 0;
   width: 30%;
+  height: 100%;
   padding: 4rem 5rem;
   background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.219);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.048);
+  z-index: 1;
 }
 
 .settings {
@@ -125,15 +131,23 @@ h3 {
   width: 100%;
   font-family: inherit;
   height: 34px;
+  padding: 1rem;
   outline: none;
   background-color: transparent;
   border: none;
   color: #fafafa;
   border-bottom: 1px solid #fafafa;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  transition: 0.4s ease-in-out;
 }
 
 #location-input input::placeholder {
   color: #94a3b8;
+}
+
+#location-input input:focus {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #location-input button {
