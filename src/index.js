@@ -1,3 +1,4 @@
+import displayController from './controllers/displayController';
 import './main.css';
 
-console.log('here');
+displayController.init();
