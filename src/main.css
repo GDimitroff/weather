@@ -30,10 +30,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: #fafafa;
-  transition: 500ms;
-
-  /* Change to 0 once the whole app is finished */
-  opacity: 1;
+  opacity: 0;
 }
 
 /* Add background overlay */
@@ -101,8 +98,11 @@ h3 {
   padding: 5rem;
   background: rgba(0, 0, 0, 0.3);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.219);
+
+  /* FIXME: Fix bug with overlay when hovering different tabs */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+
   border: 1px solid rgba(0, 0, 0, 0.048);
   overflow-y: auto;
   z-index: 1;
@@ -300,6 +300,24 @@ input:checked + .slider:before {
 
 hr {
   margin: 3rem 0;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-off {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /************************************/

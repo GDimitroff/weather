@@ -5,7 +5,6 @@ const displayController = (() => {
   const temp = main.querySelector('.temp');
   const dateOutput = main.querySelector('.date');
   const timeOutput = main.querySelector('.time');
-  const conditionOutput = main.querySelector('.condition');
   const nameOutput = main.querySelector('.name');
   const icon = main.querySelector('#icon');
   const cloudOutput = main.querySelector('.cloud');
@@ -19,8 +18,7 @@ const displayController = (() => {
   const search = main.querySelector('.search');
   const btn = main.querySelector('.submit');
 
-  // Default city when the page loads
-  let cityInput = 'Kotel';
+  let location;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -31,29 +29,53 @@ const displayController = (() => {
       return;
     }
 
-    cityInput = search.value;
+    const weatherData = await weatherService.getWeather(search.value);
+    location = weatherData.name;
     search.value = '';
-    main.style.opacity = '0';
-    const data = await weatherService.fetchWeatherData(cityInput);
-    temp.innerHTML = data.main.temp;
-    main.style.opacity = '1';
+
+    main.style.animation = '0.2s fade-off forwards';
+    main.addEventListener(
+      'animationend',
+      (e) => {
+        renderWeatherData(weatherData);
+        main.style.animation = '0.2s fade-in forwards';
+      },
+      { once: true }
+    );
+
+    updateStorage();
   });
 
-  function dayOfTheWeek(day, month, year) {
-    const weekday = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday',
-    ];
+  const loadStorage = () => {
+    return JSON.parse(localStorage.getItem('location'));
+  };
 
-    return weekday[new Date(`${day}/${month}/${year}`)].getDay();
-  }
+  const updateStorage = () => {
+    localStorage.setItem('location', JSON.stringify(location));
+  };
 
-  const init = () => {};
+  const renderWeatherData = (weatherData) => {
+    console.log(location);
+    console.log(weatherData);
+
+    nameOutput.innerHTML = weatherData.name + `, ${weatherData.sys.country}`;
+    cloudOutput.innerHTML = weatherData.weather[0].description;
+    temp.innerHTML = weatherData.main.temp.toString().slice(0, 2) + '°';
+  };
+
+  const init = async () => {
+    if (!localStorage.getItem('location')) {
+      location = 'kotel';
+      updateStorage();
+    } else {
+      location = loadStorage();
+    }
+
+    const weatherData = await weatherService.getWeather(location);
+    renderWeatherData(weatherData);
+
+    main.style.animation = '0.5s fade-in forwards';
+  };
 
   return { init };
 })();
