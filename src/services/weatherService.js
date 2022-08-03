@@ -51,7 +51,6 @@ const weatherService = (() => {
         tempDescription: forecastData.daily[i].weather[0].description,
         dayTemp: Math.round(forecastData.daily[i].temp.day),
         nightTemp: Math.round(forecastData.daily[i].temp.night),
-        windSpeed: forecastData.daily[i].wind_speed,
       };
     }
 

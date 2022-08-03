@@ -16,6 +16,7 @@ const displayController = (() => {
   const sunsetOutput = main.querySelector('.sunset');
   const form = main.querySelector('#location-input');
   const search = main.querySelector('.search');
+  const weekdays = main.querySelectorAll('.weekday');
 
   let location;
 
@@ -97,6 +98,29 @@ const displayController = (() => {
     main.style.backgroundImage = `url(./assets/imgs/${weatherString}.jpg)`;
   };
 
+  const renderForecastData = (daily) => {
+    const days = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ];
+
+    daily.forEach((day, index) => {
+      const weekday = weekdays[index];
+      weekday.querySelector('.left > p').textContent = days[day.date.getDay()];
+      weekday.querySelector('.right > p').textContent = day.tempDescription;
+      weekday.querySelector(
+        '.right > .forecast-icon'
+      ).src = `./assets/imgs/${day.icon}.png`;
+      weekday.querySelector('.day').textContent = day.dayTemp + '°';
+      weekday.querySelector('.night').textContent = day.nightTemp + '°';
+    });
+  };
+
   const renderWeatherData = (weatherData) => {
     setCorrectImage(
       weatherData.current.time,
@@ -118,6 +142,8 @@ const displayController = (() => {
     windOutput.innerHTML = weatherData.current.windSpeed + ' km/h';
     sunriseOutput.innerHTML = format(weatherData.current.sunriseTime, 'HH:mm');
     sunsetOutput.innerHTML = format(weatherData.current.sunsetTime, 'HH:mm');
+
+    renderForecastData(weatherData.daily);
   };
 
   const init = async () => {
