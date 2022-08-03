@@ -1,10 +1,10 @@
 import weatherService from '../services/weatherService';
+import { format } from 'date-fns';
 
 const displayController = (() => {
   const main = document.querySelector('.main');
   const temp = main.querySelector('.temp');
-  const dateOutput = main.querySelector('.date');
-  const timeOutput = main.querySelector('.time');
+  const dateOutput = main.querySelector('.date-time');
   const nameOutput = main.querySelector('.name');
   const icon = main.querySelector('#icon');
   const cloudOutput = main.querySelector('.cloud');
@@ -16,18 +16,11 @@ const displayController = (() => {
   const sunsetOutput = main.querySelector('.sunset');
   const form = main.querySelector('#location-input');
   const search = main.querySelector('.search');
-  const btn = main.querySelector('.submit');
 
   let location;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    if (search.value.length === 0) {
-      // TODO: fix empty search input
-      console.log('empty search');
-      return;
-    }
 
     const weatherData = await weatherService.getWeather(search.value);
     location = weatherData.city;
@@ -57,12 +50,19 @@ const displayController = (() => {
   const renderWeatherData = (weatherData) => {
     console.log(weatherData);
 
-    nameOutput.innerHTML = weatherData.city + `, ${weatherData.country}`;
-    cloudOutput.innerHTML = weatherData.current.tempDescription;
     temp.innerHTML = weatherData.current.temp + '°';
+    cloudOutput.innerHTML = weatherData.current.tempDescription;
+    nameOutput.innerHTML = weatherData.city + `, ${weatherData.country}`;
+    dateOutput.innerHTML = format(
+      weatherData.current.time,
+      'EEEE d MMMM yyyy | H:mm'
+    );
     feelsLikeOutput.innerHTML = weatherData.current.feelsLike + '°';
+    chanceRainOutput.innerHTML = weatherData.current.chanceOfRain + '%';
     humidityOutput.innerHTML = weatherData.current.humidity + '%';
     windOutput.innerHTML = weatherData.current.windSpeed + ' km/h';
+    sunriseOutput.innerHTML = format(weatherData.current.sunriseTime, 'HH:mm');
+    sunsetOutput.innerHTML = format(weatherData.current.sunsetTime, 'HH:mm');
   };
 
   const init = async () => {
