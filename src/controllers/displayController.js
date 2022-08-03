@@ -47,9 +47,63 @@ const displayController = (() => {
     localStorage.setItem('location', JSON.stringify(location));
   };
 
-  const renderWeatherData = (weatherData) => {
-    console.log(weatherData);
+  const setCorrectImage = (localTime, sunriseTime, sunsetTime, description) => {
+    const time = localTime.getHours() * 60 + localTime.getMinutes();
+    const sunrise = sunriseTime.getHours() * 60 + sunriseTime.getMinutes();
+    const sunset = sunsetTime.getHours() * 60 + sunsetTime.getMinutes();
 
+    let imageString = `Night`;
+    if (time > sunrise && time < sunset) {
+      imageString = 'Day';
+    }
+
+    let weatherString;
+    switch (description) {
+      case 'Clear':
+        weatherString = 'clear';
+        break;
+      case 'Clouds':
+        weatherString = 'cloudy';
+        break;
+      case 'Rain':
+      case 'Drizzle':
+        weatherString = 'rainy';
+        break;
+      case 'Snow':
+        weatherString = 'snowy';
+        break;
+      case 'Thunderstorm':
+        weatherString = 'thunderstorm';
+        break;
+      case 'Mist':
+      case 'Smoke':
+      case 'Haze':
+      case 'Dust':
+      case 'Fog':
+      case 'Sand':
+      case 'Ash':
+      case 'Squall':
+        weatherString = 'fog';
+        break;
+      case 'Tornado':
+        weatherString = 'tornado';
+        break;
+      default:
+        weatherString = 'clear';
+        break;
+    }
+
+    weatherString += imageString;
+    main.style.backgroundImage = `url(./assets/imgs/${weatherString}.jpg)`;
+  };
+
+  const renderWeatherData = (weatherData) => {
+    setCorrectImage(
+      weatherData.current.time,
+      weatherData.current.sunriseTime,
+      weatherData.current.sunsetTime,
+      weatherData.current.weatherDescription
+    );
     temp.innerHTML = weatherData.current.temp + '°';
     icon.src = `./assets/imgs/${weatherData.current.icon}.png`;
     cloudOutput.innerHTML = weatherData.current.tempDescription;

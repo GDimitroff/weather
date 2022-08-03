@@ -22,6 +22,7 @@ const weatherService = (() => {
         clouds: forecastData.current.clouds,
         windSpeed: forecastData.current.wind_speed,
         tempDescription: forecastData.current.weather[0].description,
+        weatherDescription: forecastData.current.weather[0].main,
         icon: forecastData.current.weather[0].icon,
         chanceOfRain: Math.round(forecastData.daily[0].pop * 100),
         sunriseTime: addSeconds(
@@ -70,7 +71,6 @@ const weatherService = (() => {
       );
 
       const forecastData = await response.json();
-      console.log(forecastData);
       return processData({ locationData, forecastData });
     } catch (error) {
       return { cod: error.name, message: error.message };
