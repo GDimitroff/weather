@@ -75,9 +75,14 @@ h3 {
   justify-content: center;
 }
 
-.condition img {
+.icon {
   width: 52px;
   height: 52px;
+}
+
+.forecast-icon {
+  width: 28px;
+  height: 28px;
 }
 
 .name {
@@ -181,6 +186,7 @@ h3 {
 
 .left,
 .right {
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -197,8 +203,20 @@ h3 {
 }
 
 .right {
-  font-size: 1.4rem;
   font-weight: 700;
+  text-align: right;
+}
+
+.right > div {
+  min-width: 28px;
+}
+
+.day {
+  color: #fca5a5;
+}
+
+.night {
+  color: #bae6fd;
 }
 
 .sunrise-sunset {
@@ -220,11 +238,15 @@ h3 {
 .weekday {
   display: flex;
   justify-content: space-between;
+  font-size: 1.4rem;
 }
 
-.temp-day-night {
-  min-width: 75px;
-  text-align: end;
+.weekday .left p {
+  font-weight: 700;
+}
+
+.weekday .right p {
+  font-weight: 400;
 }
 
 /* Switch*/
@@ -334,6 +356,10 @@ hr {
   html {
     font-size: 50%;
   }
+
+  .weekday .right p {
+    display: none;
+  }
 }
 
 /************************************/
@@ -347,6 +373,7 @@ hr {
 
   .left-panel {
     flex-basis: 25%;
+    align-items: center;
   }
 
   .sidebar {
@@ -364,6 +391,10 @@ hr {
   .details ul {
     gap: 12px;
   }
+
+  .weekday .right p {
+    display: block;
+  }
 }
 
 /************************************/
@@ -373,5 +404,10 @@ hr {
 @media (max-width: 34em) {
   .name {
     font-size: 2.4rem;
+  }
+
+  .left-panel,
+  .sidebar {
+    padding: 3rem;
   }
 }

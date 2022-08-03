@@ -6,7 +6,7 @@ const displayController = (() => {
   const temp = main.querySelector('.temp');
   const dateOutput = main.querySelector('.date-time');
   const nameOutput = main.querySelector('.name');
-  const icon = main.querySelector('#icon');
+  const icon = main.querySelector('.condition .icon');
   const cloudOutput = main.querySelector('.cloud');
   const feelsLikeOutput = main.querySelector('.feels-like');
   const chanceRainOutput = main.querySelector('.chance-rain');
