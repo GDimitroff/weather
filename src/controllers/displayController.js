@@ -30,7 +30,7 @@ const displayController = (() => {
     }
 
     const weatherData = await weatherService.getWeather(search.value);
-    location = weatherData.name;
+    location = weatherData.city;
     search.value = '';
 
     main.style.animation = '0.2s fade-off forwards';
@@ -55,12 +55,14 @@ const displayController = (() => {
   };
 
   const renderWeatherData = (weatherData) => {
-    console.log(location);
     console.log(weatherData);
 
-    nameOutput.innerHTML = weatherData.name + `, ${weatherData.sys.country}`;
-    cloudOutput.innerHTML = weatherData.weather[0].description;
-    temp.innerHTML = weatherData.main.temp.toString().slice(0, 2) + '°';
+    nameOutput.innerHTML = weatherData.city + `, ${weatherData.country}`;
+    cloudOutput.innerHTML = weatherData.current.tempDescription;
+    temp.innerHTML = weatherData.current.temp + '°';
+    feelsLikeOutput.innerHTML = weatherData.current.feelsLike + '°';
+    humidityOutput.innerHTML = weatherData.current.humidity + '%';
+    windOutput.innerHTML = weatherData.current.windSpeed + ' km/h';
   };
 
   const init = async () => {
@@ -73,7 +75,6 @@ const displayController = (() => {
 
     const weatherData = await weatherService.getWeather(location);
     renderWeatherData(weatherData);
-
     main.style.animation = '0.5s fade-in forwards';
   };
 
