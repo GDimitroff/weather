@@ -70,6 +70,7 @@ const weatherService = (() => {
       );
 
       const forecastData = await response.json();
+      console.log(forecastData);
       return processData({ locationData, forecastData });
     } catch (error) {
       return { cod: error.name, message: error.message };
