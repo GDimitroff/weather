@@ -18,8 +18,36 @@ const displayController = (() => {
   const search = main.querySelector('.search');
   const weekdays = main.querySelectorAll('.weekday');
   const error = main.querySelector('.error');
+  const checkbox = main.querySelector('input[type=checkbox]');
+  const degreesElements = main.querySelectorAll('.degrees');
 
   let location;
+  let degrees;
+
+  const convertToF = () => {
+    degrees = 'fahrenheit';
+    checkbox.checked = true;
+    degreesElements.forEach((degree) => {
+      const celsius = Number(degree.textContent.slice(0, -1));
+      const fahrenheit = (celsius * 9) / 5 + 32;
+      degree.textContent = fahrenheit.toFixed(0) + '°';
+    });
+  };
+
+  const convertToC = () => {
+    degrees = 'celsius';
+    checkbox.checked = false;
+    degreesElements.forEach((degree) => {
+      const fahrenheit = Number(degree.textContent.slice(0, -1));
+      const celsius = ((fahrenheit - 32) * 5) / 9;
+      degree.textContent = celsius.toFixed(0) + '°';
+    });
+  };
+
+  checkbox.addEventListener('change', (e) => {
+    e.target.checked ? convertToF() : convertToC();
+    updateStorage();
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -42,6 +70,7 @@ const displayController = (() => {
       'animationend',
       (e) => {
         renderWeatherData(weatherData);
+        if (checkbox.checked) convertToF();
         main.style.animation = '0.2s fade-in forwards';
       },
       { once: true }
@@ -52,11 +81,11 @@ const displayController = (() => {
   });
 
   const loadStorage = () => {
-    return JSON.parse(localStorage.getItem('location'));
+    return JSON.parse(localStorage.getItem('data'));
   };
 
   const updateStorage = () => {
-    localStorage.setItem('location', JSON.stringify(location));
+    localStorage.setItem('data', JSON.stringify({ location, degrees }));
   };
 
   const setCorrectImage = (localTime, sunriseTime, sunsetTime, description) => {
@@ -163,15 +192,19 @@ const displayController = (() => {
   };
 
   const init = async () => {
-    if (!localStorage.getItem('location')) {
+    if (!localStorage.getItem('data')) {
       location = 'kotel';
+      degrees = 'celsius';
       updateStorage();
     } else {
-      location = loadStorage();
+      location = loadStorage().location;
+      degrees = loadStorage().degrees;
     }
 
     const weatherData = await weatherService.getWeather(location);
     renderWeatherData(weatherData);
+    if (degrees === 'fahrenheit') convertToF();
+
     main.style.animation = '0.5s fade-in forwards';
   };
 
