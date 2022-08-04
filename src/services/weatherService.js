@@ -1,7 +1,5 @@
 import { addSeconds, fromUnixTime } from 'date-fns';
 
-// TODO: handle errors
-
 const weatherService = (() => {
   const API_KEY = 'e57aaa33be19bda2a68d3e3b0b8f05ee';
 
@@ -72,7 +70,7 @@ const weatherService = (() => {
       const forecastData = await response.json();
       return processData({ locationData, forecastData });
     } catch (error) {
-      return { cod: error.name, message: error.message };
+      return error;
     }
   }
 
@@ -86,14 +84,12 @@ const weatherService = (() => {
         }
       );
 
-      if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
+      if (!response.ok) throw new Error(`'${city}' was not found. Try again...`);
 
       const locationData = await response.json();
       return getForecast(locationData);
     } catch (error) {
-      return { cod: error.name, message: error.message };
+      return { error: error.message };
     }
   }
 

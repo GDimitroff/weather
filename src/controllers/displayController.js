@@ -17,13 +17,23 @@ const displayController = (() => {
   const form = main.querySelector('#location-input');
   const search = main.querySelector('.search');
   const weekdays = main.querySelectorAll('.weekday');
+  const error = main.querySelector('.error');
 
   let location;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    error.classList.remove('show');
+    error.textContent = '';
+
     const weatherData = await weatherService.getWeather(search.value);
+
+    if (weatherData.error) {
+      showError(weatherData.error);
+      return;
+    }
+
     location = weatherData.city;
     search.value = '';
 
@@ -96,6 +106,11 @@ const displayController = (() => {
 
     weatherString += imageString;
     main.style.backgroundImage = `url(./assets/imgs/${weatherString}.jpg)`;
+  };
+
+  const showError = (errorMessage) => {
+    error.textContent = errorMessage;
+    error.classList.add('show');
   };
 
   const renderForecastData = (daily) => {

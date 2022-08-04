@@ -117,7 +117,22 @@ h3 {
 }
 
 .search-input {
+  position: relative;
   width: 100%;
+}
+
+.error {
+  display: none;
+  position: absolute;
+  bottom: -20px;
+  left: 5px;
+  font-size: 1.2rem;
+  color: #fca5a5;
+}
+
+.error.show {
+  display: block;
+  animation: 0.2s fade-in;
 }
 
 #location-input {
@@ -378,10 +393,6 @@ hr {
 
   .sidebar {
     flex-basis: 75%;
-  }
-
-  .settings {
-    margin-bottom: 3rem;
   }
 
   .sidebar h3 {
