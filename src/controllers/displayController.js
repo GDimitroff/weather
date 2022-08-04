@@ -47,6 +47,7 @@ const displayController = (() => {
       { once: true }
     );
 
+    form.querySelector('input').blur();
     updateStorage();
   });
 

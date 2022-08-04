@@ -95,12 +95,11 @@ h3 {
 }
 
 .sidebar {
+  position: relative;
   flex-basis: 40%;
   padding: 5rem;
   background: rgba(0, 0, 0, 0.3);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.219);
-
-  /* FIXME: Fix bug with overlay when hovering different tabs */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
